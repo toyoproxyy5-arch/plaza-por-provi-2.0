@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Economía Doméstica | Tu guía del hogar venezolano</title>
+<meta name="description" content="Blog educativo independiente sobre economía del hogar venezolano. Presupuesto familiar, alquiler, servicios, ahorro y deudas explicados con claridad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --negro:    #111111;
+  --terra:    #C94F2C;
+  --terra-lt: #F2E8E4;
+  --arena:    #F5F0E8;
+  --crema:    #FDFAF6;
+  --gris:     #6B6560;
+  --gris-lt:  #E8E4DF;
+  --blanco:   #FFFFFF;
+  --f-display:'Bebas Neue',sans-serif;
+  --f-serif:  'DM Serif Display',Georgia,serif;
+  --f-body:   'DM Sans',system-ui,sans-serif;
+  --r:        6px;
+  --sh:       0 2px 20px rgba(17,17,17,0.08);
+  --sh-md:    0 8px 40px rgba(17,17,17,0.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-body);background:var(--crema);color:var(--negro);font-size:16px;line-height:1.6}
+
+/* ── NAV ── */
+nav{background:var(--negro);position:sticky;top:0;z-index:100}
+.nav-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;gap:16px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-ico{width:32px;height:32px;background:var(--terra);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--blanco);font-family:var(--f-display);font-size:1.1rem;letter-spacing:0;flex-shrink:0}
+.logo-wrap{}
+.logo-name{font-family:var(--f-display);font-size:1.05rem;color:var(--blanco);letter-spacing:0.08em;line-height:1;display:block}
+.logo-sub{font-size:0.55rem;color:rgba(255,255,255,0.4);letter-spacing:0.12em;text-transform:uppercase;display:block;margin-top:2px}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{font-size:0.72rem;font-weight:500;color:rgba(255,255,255,0.5);text-decoration:none;padding:6px 10px;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.15s}
+.nav-links a:hover{color:var(--terra)}
+.nav-s{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:5px 11px}
+.nav-s input{background:none;border:none;outline:none;font-family:var(--f-body);font-size:0.74rem;color:var(--blanco);width:120px}
+.nav-s input::placeholder{color:rgba(255,255,255,0.3)}
+.burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.burger span{display:block;width:20px;height:2px;background:var(--blanco);border-radius:2px}
+
+/* ── DISCLAIMER ── */
+.disc{background:var(--terra);padding:10px 24px;text-align:center;font-size:0.76rem;color:var(--blanco);font-weight:500;line-height:1.6}
+.disc strong{font-weight:700}
+
+/* ── HERO — magazine cover style ── */
+.hero{background:var(--negro);position:relative;overflow:hidden;border-bottom:3px solid var(--terra)}
+.hero-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;min-height:520px}
+.hero-left{padding:56px 48px 56px 24px;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid rgba(255,255,255,0.1)}
+.hero-vol{font-size:0.65rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.hero-vol::after{content:'';flex:1;height:1px;background:var(--terra);opacity:0.4}
+.hero h1{font-family:var(--f-display);font-size:clamp(4rem,8vw,7rem);line-height:0.92;color:var(--blanco);letter-spacing:0.02em;margin-bottom:24px}
+.hero h1 span{color:var(--terra);display:block}
+.hero-lead{font-family:var(--f-serif);font-style:italic;font-size:1.1rem;color:rgba(255,255,255,0.65);line-height:1.65;max-width:420px;margin-bottom:32px}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap}
+.hero-tag{font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:5px 12px;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.5);border-radius:2px;cursor:pointer;transition:all 0.15s}
+.hero-tag:hover,.hero-tag.on{background:var(--terra);border-color:var(--terra);color:var(--blanco)}
+.hero-right{padding:56px 24px 56px 40px;display:flex;flex-direction:column;gap:0}
+.hero-feat{display:flex;flex-direction:column;gap:0}
+.hero-feat-item{padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.08);cursor:pointer;transition:all 0.2s}
+.hero-feat-item:first-child{padding-top:0}
+.hero-feat-item:last-child{border-bottom:none}
+.hero-feat-item:hover .hfi-title{color:var(--terra)}
+.hfi-cat{font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--terra);margin-bottom:6px}
+.hfi-title{font-family:var(--f-serif);font-size:1rem;color:var(--blanco);line-height:1.35;transition:color 0.15s}
+.hfi-desc{font-size:0.74rem;color:rgba(255,255,255,0.4);margin-top:4px;line-height:1.5}
+.hero-cta{margin-top:auto;padding-top:28px;display:flex;gap:12px;align-items:center}
+.btn-main{background:var(--terra);color:var(--blanco);font-family:var(--f-body);font-weight:600;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;padding:11px 22px;border-radius:3px;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer}
+.btn-main:hover{background:#A83C1E;transform:translateY(-1px)}
+.btn-ghost{color:rgba(255,255,255,0.4);font-size:0.75rem;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:5px;transition:color 0.15s;background:none;border:none;cursor:pointer;font-family:var(--f-body)}
+.btn-ghost:hover{color:var(--blanco)}
+
+/* ── STATS STRIP ── */
+.strip{background:var(--terra);padding:14px 24px}
+.strip-in{max-width:1200px;margin:0 auto;display:flex;gap:0;justify-content:space-around}
+.strip-item{text-align:center;color:var(--blanco);flex:1;border-right:1px solid rgba(255,255,255,0.2)}
+.strip-item:last-child{border-right:none}
+.strip-item .n{font-family:var(--f-display);font-size:2rem;letter-spacing:0.04em;line-height:1}
+.strip-item .l{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:2px}
+
+/* ── CATS ── */
+.cats{padding:56px 24px;background:var(--arena);border-bottom:1px solid var(--gris-lt)}
+.cats-in{max-width:1200px;margin:0 auto}
+.section-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px}
+.section-eye{font-family:var(--f-display);font-size:2.2rem;color:var(--negro);letter-spacing:0.04em;line-height:1}
+.section-line{flex:1;height:2px;background:var(--negro)}
+.cat-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.cat-box{background:var(--blanco);border:2px solid var(--gris-lt);padding:22px 16px;cursor:pointer;transition:all 0.2s;text-align:left;position:relative;overflow:hidden}
+.cat-box::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--terra);transform:scaleX(0);transform-origin:left;transition:transform 0.2s}
+.cat-box:hover{border-color:var(--terra);box-shadow:var(--sh)}
+.cat-box:hover::before{transform:scaleX(1)}
+.cat-box .ic{font-size:2rem;margin-bottom:10px;display:block}
+.cat-box h3{font-family:var(--f-serif);font-size:1rem;color:var(--negro);margin-bottom:4px}
+.cat-box p{font-size:0.7rem;color:var(--gris);letter-spacing:0.02em}
+.cat-box .arr{position:absolute;top:16px;right:16px;color:var(--gris-lt);font-size:1.2rem;transition:all 0.2s}
+.cat-box:hover .arr{color:var(--terra);transform:translate(2px,-2px)}
+
+/* ── ARTS ── */
+.arts{padding:56px 24px;background:var(--crema)}
+.arts-in{max-width:1200px;margin:0 auto}
+.filter-strip{display:flex;gap:0;margin-bottom:32px;border-bottom:2px solid var(--negro)}
+.fb{font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:10px 16px;border:none;background:none;color:var(--gris);cursor:pointer;font-family:var(--f-body);position:relative;transition:color 0.15s}
+.fb::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--terra);transform:scaleX(0);transition:transform 0.2s}
+.fb.on,.fb:hover{color:var(--negro)}
+.fb.on::after{transform:scaleX(1)}
+.art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+.art-card{background:var(--blanco);border:1px solid var(--gris-lt);cursor:pointer;transition:all 0.2s;display:flex;flex-direction:column}
+.art-card:hover{box-shadow:var(--sh-md);transform:translateY(-4px)}
+.art-thumb{height:120px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--arena);border-bottom:3px solid var(--terra)}
+.art-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.art-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.art-tag{font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;border-radius:2px}
+.art-date{font-size:0.65rem;color:var(--gris);margin-left:auto}
+.art-card h3{font-family:var(--f-serif);font-size:1.05rem;color:var(--negro);line-height:1.35;margin-bottom:8px}
+.art-card p{font-size:0.8rem;color:var(--gris);line-height:1.6;flex:1}
+.art-read{font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--terra);margin-top:14px;display:flex;align-items:center;gap:5px}
+.art-read::after{content:'→'}
+
+.tg-a{background:#F2E8E4;color:#7A2510}
+.tg-b{background:#FBF5E8;color:#6B4A00}
+.tg-c{background:#E8F2EA;color:#1A5C2A}
+.tg-d{background:#E8EAF6;color:#283593}
+.tg-e{background:#FFF3E0;color:#7B4700}
+
+/* ── NEWSLETTER ── */
+.nl{background:var(--negro);padding:56px 24px}
+.nl-in{max-width:640px;margin:0 auto;text-align:center}
+.nl h2{font-family:var(--f-display);font-size:2.8rem;color:var(--blanco);letter-spacing:0.04em;margin-bottom:10px}
+.nl h2 em{color:var(--terra);font-style:normal}
+.nl p{font-size:0.88rem;color:rgba(255,255,255,0.5);margin-bottom:28px;line-height:1.7}
+.nl-row{display:flex;gap:10px}
+.nl-row input{flex:1;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:3px;font-family:var(--f-body);font-size:0.85rem;color:var(--blanco);outline:none}
+.nl-row input:focus{border-color:var(--terra)}
+.nl-row input::placeholder{color:rgba(255,255,255,0.3)}
+.nl-row button{background:var(--terra);color:var(--blanco);border:none;font-family:var(--f-body);font-weight:600;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;padding:12px 22px;border-radius:3px;cursor:pointer;white-space:nowrap}
+.nl-note{font-size:0.7rem;color:rgba(255,255,255,0.25);margin-top:12px}
+.nl-note a{color:rgba(255,255,255,0.4);text-decoration:underline}
+.nl-ok{display:none;background:rgba(201,79,44,0.15);border:1px solid var(--terra);border-radius:3px;padding:14px;font-size:0.85rem;color:var(--terra);font-weight:600;margin-top:12px}
+
+/* ── READER ── */
+#reader{display:none;position:fixed;inset:0;z-index:200;background:var(--crema);overflow-y:auto}
+.rdr-nav{background:var(--negro);padding:14px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:201;border-bottom:3px solid var(--terra)}
+.back{background:none;border:none;cursor:pointer;font-family:var(--f-body);font-size:0.8rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.6);display:flex;align-items:center;gap:6px}
+.back:hover{color:var(--terra)}
+.rdr-wrap{max-width:700px;margin:0 auto;padding:52px 24px 100px}
+.rdr-disc{background:var(--terra-lt);border-left:3px solid var(--terra);padding:12px 16px;font-size:0.78rem;color:#7A2510;margin-bottom:24px;line-height:1.6}
+.rdr-tag{font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:2px;margin-bottom:10px;display:inline-block}
+.rdr-date{font-size:0.7rem;color:var(--gris);margin-bottom:14px;display:block}
+.rdr-wrap h1{font-family:var(--f-serif);font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.12;color:var(--negro);margin-bottom:14px}
+.r-meta{font-size:0.74rem;color:var(--gris);padding-bottom:18px;margin-bottom:28px;border-bottom:2px solid var(--terra)}
+.rb h2{font-family:var(--f-display);font-size:1.6rem;letter-spacing:0.04em;color:var(--negro);margin:34px 0 11px;padding-bottom:6px;border-bottom:1px solid var(--gris-lt)}
+.rb h3{font-family:var(--f-serif);font-size:1.05rem;color:var(--negro);margin:20px 0 7px}
+.rb p{color:var(--gris);margin-bottom:15px;line-height:1.82;font-size:0.97rem}
+.rb ul,.rb ol{padding-left:22px;margin-bottom:15px}
+.rb li{color:var(--gris);margin-bottom:7px;line-height:1.7;font-size:0.97rem}
+.rb strong{color:var(--negro)}
+.tip{background:var(--terra-lt);border-left:3px solid var(--terra);padding:14px 18px;margin:22px 0}
+.tip p{margin:0;color:#7A2510;font-size:0.91rem}
+.warn{background:#FFF8E1;border-left:3px solid #F9A825;padding:14px 18px;margin:22px 0}
+.warn p{margin:0;color:#5C3D00;font-size:0.91rem}
+.adslot{border:1px dashed var(--gris-lt);padding:12px;text-align:center;color:var(--gris);font-size:0.68rem;margin:26px 0}
+.rel-blk{margin-top:48px;padding-top:26px;border-top:2px solid var(--negro)}
+.rel-blk h4{font-family:var(--f-display);font-size:1.2rem;letter-spacing:0.06em;color:var(--negro);margin-bottom:14px}
+.rel-links{display:flex;flex-wrap:wrap;gap:8px}
+.rel-lnk{background:var(--arena);border:1px solid var(--gris-lt);padding:7px 13px;font-size:0.78rem;color:var(--negro);text-decoration:none;font-weight:600;transition:all 0.15s}
+.rel-lnk:hover{background:var(--terra);color:var(--blanco);border-color:var(--terra)}
+
+/* ── PAGES ── */
+#page{display:none;position:fixed;inset:0;z-index:200;background:var(--crema);overflow-y:auto}
+.page-nav{background:var(--negro);padding:14px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:201;border-bottom:3px solid var(--terra)}
+.page-wrap{max-width:760px;margin:0 auto;padding:52px 24px 100px}
+.page-wrap h1{font-family:var(--f-display);font-size:2.5rem;letter-spacing:0.04em;color:var(--negro);margin-bottom:8px}
+.page-wrap h2{font-family:var(--f-display);font-size:1.4rem;letter-spacing:0.04em;color:var(--terra);margin:28px 0 10px}
+.page-wrap p{color:var(--gris);font-size:0.93rem;line-height:1.8;margin-bottom:12px}
+.page-wrap ul{padding-left:20px;margin-bottom:12px}
+.page-wrap li{color:var(--gris);font-size:0.93rem;line-height:1.75;margin-bottom:6px}
+.page-wrap a{color:var(--terra)}
+.page-disc{background:var(--terra-lt);border-left:3px solid var(--terra);padding:16px 20px;font-size:0.85rem;color:#7A2510;margin:20px 0;line-height:1.7}
+.cf{display:flex;flex-direction:column;gap:12px;margin-top:16px}
+.cf input,.cf textarea{padding:11px 14px;border:1.5px solid var(--gris-lt);background:var(--blanco);font-family:var(--f-body);font-size:0.85rem;outline:none;resize:vertical;color:var(--negro)}
+.cf input:focus,.cf textarea:focus{border-color:var(--terra)}
+.cf button{background:var(--terra);color:var(--blanco);border:none;font-family:var(--f-body);font-weight:600;font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;padding:12px 22px;cursor:pointer;width:fit-content}
+.cf-ok{display:none;background:var(--terra-lt);border-left:3px solid var(--terra);padding:14px;font-size:0.85rem;color:#7A2510;font-weight:600;margin-top:8px}
+
+/* ── COOKIE ── */
+#ck{position:fixed;bottom:0;left:0;right:0;z-index:999;background:var(--negro);color:rgba(255,255,255,0.8);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:3px solid var(--terra)}
+#ck p{font-size:0.8rem;max-width:640px}
+#ck a{color:var(--terra)}
+.ck-btns{display:flex;gap:8px;flex-shrink:0}
+.ck-ok{background:var(--terra);color:var(--blanco);border:none;font-family:var(--f-body);font-weight:600;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;padding:9px 20px;cursor:pointer}
+.ck-no{background:none;color:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.2);font-family:var(--f-body);font-size:0.8rem;padding:9px 20px;cursor:pointer}
+
+/* ── FOOTER ── */
+footer{background:var(--negro);color:rgba(255,255,255,0.45);padding:48px 24px 24px;border-top:3px solid var(--terra)}
+.foot-disc{max-width:1200px;margin:0 auto 28px;background:rgba(201,79,44,0.1);border:1px solid rgba(201,79,44,0.25);padding:14px 18px;font-size:0.76rem;color:rgba(255,255,255,0.6);line-height:1.65}
+.foot-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:36px;margin-bottom:32px}
+.foot-brand{font-family:var(--f-display);font-size:1.4rem;letter-spacing:0.06em;color:var(--blanco);margin-bottom:4px;display:block}
+.foot-sub{font-size:0.58rem;color:rgba(255,255,255,0.3);margin-bottom:10px;display:block;letter-spacing:0.1em;text-transform:uppercase}
+.foot-desc{font-size:0.78rem;line-height:1.65;max-width:280px}
+.foot-col h5{font-family:var(--f-display);font-size:0.9rem;letter-spacing:0.1em;color:var(--blanco);margin-bottom:14px}
+.foot-col ul{list-style:none}
+.foot-col li{margin-bottom:9px}
+.foot-col a{color:rgba(255,255,255,0.35);text-decoration:none;font-size:0.78rem;transition:color 0.15s;cursor:pointer}
+.foot-col a:hover{color:var(--terra)}
+.foot-bot{max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.07);padding-top:18px;font-size:0.71rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* ── PROVINET BAND ── */
+.prov{background:var(--arena);border-top:1px solid var(--gris-lt);border-bottom:1px solid var(--gris-lt);padding:12px 24px}
+.prov-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.prov-badge{background:var(--negro);color:var(--blanco);font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 12px;white-space:nowrap}
+.prov-txt{font-size:0.78rem;color:var(--gris);line-height:1.55}
+.prov-txt strong{color:var(--negro)}
+.prov-txt em{font-style:normal;color:var(--terra)}
+
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .cat-row{grid-template-columns:repeat(3,1fr)}
+  .foot-in{grid-template-columns:1fr 1fr}
+  .foot-in>div:first-child{grid-column:span 2}
+  .nav-links,.nav-s{display:none}
+  .burger{display:flex}
+}
+@media(max-width:480px){
+  .cat-row{grid-template-columns:repeat(2,1fr)}
+  .foot-in{grid-template-columns:1fr}
+  .foot-in>div:first-child{grid-column:span 1}
+  .nl-row{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- COOKIE -->
+<div id="ck">
+  <p>Usamos cookies propias y de terceros (Google AdSense/Analytics). Lee nuestra <a href="#" onclick="showPage('privacidad');return false;">Privacidad</a> y <a href="#" onclick="showPage('cookies');return false;">Cookies</a>.</p>
+  <div class="ck-btns">
+    <button class="ck-ok" onclick="okCk()">Aceptar</button>
+    <button class="ck-no" onclick="noCk()">Solo necesarias</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="#" onclick="goHome();return false;">
+      <div class="logo-ico">ED</div>
+      <div class="logo-wrap">
+        <span class="logo-name">Economía Doméstica</span>
+        <span class="logo-sub">Blog independiente · Educación del hogar</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#" onclick="goHome();return false;">Inicio</a></li>
+      <li><a href="#" onclick="fcat('presupuesto');return false;">Presupuesto</a></li>
+      <li><a href="#" onclick="fcat('alquiler');return false;">Alquiler</a></li>
+      <li><a href="#" onclick="fcat('servicios');return false;">Servicios</a></li>
+      <li><a href="#" onclick="fcat('ahorro');return false;">Ahorro</a></li>
+      <li><a href="#" onclick="fcat('deudas');return false;">Deudas</a></li>
+      <li><a href="#" onclick="showPage('sobre');return false;">Nosotros</a></li>
+      <li><a href="#" onclick="showPage('contacto');return false;">Contacto</a></li>
+    </ul>
+    <div class="nav-s">
+      <span style="color:rgba(255,255,255,0.3);font-size:0.9rem">⌕</span>
+      <input type="search" placeholder="Buscar artículos..." oninput="doSearch(this.value)">
+    </div>
+    <button class="burger" onclick="togNav()" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- DISCLAIMER -->
+<div class="disc">
+  ⚠️ <strong>Aviso:</strong> Economía Doméstica es un blog independiente con fines exclusivamente educativos. No es un banco, no presta servicios financieros y no tiene afiliación oficial con ninguna entidad financiera ni gubernamental. Provinet Empresas se menciona como referencia educativa sin afiliación comercial oficial.
+</div>
+
+<!-- MAIN -->
+<div id="main">
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div>
+          <div class="hero-vol">Educación del hogar venezolano</div>
+          <h1>TU HOGAR,<br><span>TUS NÚMEROS.</span></h1>
+          <p class="hero-lead">Aprende a organizar la economía de tu hogar: presupuesto familiar, alquiler, servicios, ahorro y deudas, explicados con claridad y sin rodeos.</p>
+          <div class="hero-tags" id="hero-tags"></div>
+        </div>
+        <div class="hero-cta">
+          <a class="btn-main" href="#articulos" onclick="document.getElementById('articulos').scrollIntoView({behavior:'smooth'});return false;">Ver todos los artículos</a>
+          <button class="btn-ghost" onclick="showPage('sobre')">¿Qué es este blog? →</button>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-feat" id="hero-feat"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVINET -->
+  <div class="prov">
+    <div class="prov-in">
+      <span class="prov-badge">📚 Provinet Empresas</span>
+      <p class="prov-txt"><strong>Provinet Empresas</strong> es una marca educativa de aprendizaje sobre finanzas y emprendimiento. Economía Doméstica comparte esa misión educativa aplicada al hogar venezolano. <em>Sin afiliación comercial oficial con Provinet Empresas.</em></p>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="strip">
+    <div class="strip-in">
+      <div class="strip-item"><div class="n">10</div><div class="l">Artículos</div></div>
+      <div class="strip-item"><div class="n">5</div><div class="l">Categorías</div></div>
+      <div class="strip-item"><div class="n">100%</div><div class="l">Independiente</div></div>
+      <div class="strip-item"><div class="n">VE</div><div class="l">Venezuela</div></div>
+    </div>
+  </div>
+
+  <!-- CATS -->
+  <section class="cats">
+    <div class="cats-in">
+      <div class="section-head">
+        <div class="section-eye">Categorías</div>
+        <div class="section-line"></div>
+      </div>
+      <div class="cat-row">
+        <div class="cat-box" onclick="fcat('presupuesto')"><span class="ic">📊</span><h3>Presupuesto</h3><p>Organiza los ingresos del hogar</p><span class="arr">↗</span></div>
+        <div class="cat-box" onclick="fcat('alquiler')"><span class="ic">🏠</span><h3>Alquiler</h3><p>Vivienda, contratos y derechos</p><span class="arr">↗</span></div>
+        <div class="cat-box" onclick="fcat('servicios')"><span class="ic">💡</span><h3>Servicios</h3><p>Luz, agua, gas e internet</p><span class="arr">↗</span></div>
+        <div class="cat-box" onclick="fcat('ahorro')"><span class="ic">🐷</span><h3>Ahorro</h3><p>Guarda para el futuro familiar</p><span class="arr">↗</span></div>
+        <div class="cat-box" onclick="fcat('deudas')"><span class="ic">🔓</span><h3>Deudas</h3><p>Maneja y elimina las deudas</p><span class="arr">↗</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTS -->
+  <section class="arts" id="articulos">
+    <div class="arts-in">
+      <div class="section-head">
+        <div class="section-eye">Artículos</div>
+        <div class="section-line"></div>
+      </div>
+      <div class="filter-strip" id="frow"></div>
+      <div class="art-grid" id="grid"></div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="nl">
+    <div class="nl-in">
+      <h2>APRENDE <em>MÁS</em></h2>
+      <p>Suscríbete y recibe nuevos artículos sobre economía doméstica directamente en tu correo. Sin publicidad ni ventas, solo contenido educativo.</p>
+      <div class="nl-row">
+        <input type="email" id="nl-email" placeholder="Tu correo electrónico" autocomplete="email">
+        <button onclick="nlSubmit()">Suscribirme</button>
+      </div>
+      <p class="nl-note">Solo usamos tu email para enviarte artículos. <a href="#" onclick="showPage('privacidad');return false;">Política de Privacidad</a>.</p>
+      <div class="nl-ok" id="nl-ok">✓ ¡Gracias! Te avisaremos cuando publiquemos nuevos artículos.</div>
+    </div>
+  </section>
+</div>
+
+<!-- READER -->
+<div id="reader">
+  <div class="rdr-nav">
+    <button class="back" onclick="closeReader()">← Volver</button>
+    <span id="rcrumb" style="font-size:0.72rem;color:rgba(255,255,255,0.5);letter-spacing:0.06em;text-transform:uppercase"></span>
+  </div>
+  <div class="rdr-wrap" id="rcontent"></div>
+</div>
+
+<!-- PAGES -->
+<div id="page">
+  <div class="page-nav">
+    <button class="back" onclick="closePage()">← Volver</button>
+    <span id="page-title" style="font-size:0.72rem;color:rgba(255,255,255,0.5);letter-spacing:0.06em;text-transform:uppercase"></span>
+  </div>
+  <div class="page-wrap" id="page-content"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-disc">
+    ⚠️ <strong>Aviso legal:</strong> Economía Doméstica (economiadomestica.blog) es un blog editorial independiente operado por Jose del Carmen Padilla Orozco, Caracas, Venezuela. No tiene afiliación con ningún banco, entidad financiera ni organización gubernamental. Provinet Empresas se menciona como referencia educativa sin afiliación comercial oficial. Todo el contenido es exclusivamente informativo y educativo. Contacto: <a href="mailto:economiadomestica@gmail.com" style="color:var(--terra)">economiadomestica@gmail.com</a>
+  </div>
+  <div class="foot-in">
+    <div>
+      <span class="foot-brand">Economía Doméstica</span>
+      <span class="foot-sub">Blog independiente · Caracas, Venezuela</span>
+      <p class="foot-desc">Blog educativo independiente sobre economía del hogar para familias venezolanas. Aprende a organizar tu hogar financieramente.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Temas</h5>
+      <ul>
+        <li><a href="#" onclick="fcat('presupuesto');return false;">Presupuesto</a></li>
+        <li><a href="#" onclick="fcat('alquiler');return false;">Alquiler</a></li>
+        <li><a href="#" onclick="fcat('servicios');return false;">Servicios</a></li>
+        <li><a href="#" onclick="fcat('ahorro');return false;">Ahorro</a></li>
+        <li><a href="#" onclick="fcat('deudas');return false;">Deudas</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Blog</h5>
+      <ul>
+        <li><a href="#" onclick="showPage('sobre');return false;">Sobre nosotros</a></li>
+        <li><a href="#" onclick="showPage('contacto');return false;">Contacto</a></li>
+        <li><a href="#" onclick="showPage('editorial');return false;">Política editorial</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Legal</h5>
+      <ul>
+        <li><a href="#" onclick="showPage('privacidad');return false;">Privacidad</a></li>
+        <li><a href="#" onclick="showPage('cookies');return false;">Cookies</a></li>
+        <li><a href="#" onclick="showPage('legal');return false;">Aviso legal</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>© 2025 Economía Doméstica · economiadomestica.blog · Jose del Carmen Padilla Orozco · Caracas, Venezuela</span>
+    <span>Blog educativo independiente — sin afiliación institucional.</span>
+  </div>
+</footer>
+
+<script>
+const DISC='<div class="rdr-disc">📋 <strong>Aviso:</strong> Economía Doméstica es un blog educativo independiente sin afiliación con ninguna entidad financiera. Provinet Empresas se menciona como referencia educativa sin afiliación comercial oficial. Contenido exclusivamente informativo.</div>';
+
+const ARTS=[
+  {id:1,cat:'presupuesto',label:'Presupuesto',cls:'tg-a',icon:'📊',bg:'#F2E8E4',date:'15 jun 2025',
+   title:'Cómo hacer un presupuesto familiar en Venezuela paso a paso',
+   summary:'El presupuesto familiar es el mapa que permite que el dinero del hogar alcance para todo lo importante. Aprende a construirlo de forma realista y práctica.',
+   rel:[2,3,5],
+   body:`${DISC}<span class="rdr-tag tg-a">Presupuesto</span><span class="rdr-date">📅 15 junio 2025</span>
+<h1>Cómo hacer un presupuesto familiar en Venezuela paso a paso</h1>
+<p class="r-meta">Por Jose del Carmen Padilla Orozco · Economía Doméstica · Caracas, Venezuela · 9 min</p>
+<div class="rb">
+<p>El presupuesto familiar es la herramienta más poderosa para que el dinero del hogar alcance para lo que realmente importa. Sin él, los ingresos tienden a desaparecer sin dirección clara, generando estrés financiero al final de cada mes. Este artículo te muestra cómo construirlo de forma realista para el contexto venezolano.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+<h2>Paso 1: Conoce el ingreso total del hogar</h2>
+<p>El primer paso es sumar todos los ingresos que entran al hogar cada mes: sueldos, ingresos por trabajo independiente, remesas, alquileres si los hay. Usa el ingreso neto real, no el bruto. Si los ingresos varían, usa el promedio de los últimos tres meses y trabaja con el número más conservador.</p>
+<h2>Paso 2: Lista los gastos fijos del hogar</h2>
+<p>Los gastos fijos son los que ocurren todos los meses por montos similares: alquiler o cuota de vivienda, servicios básicos, transporte, cuotas de deudas. Suma todos. Ese total es el piso mensual del hogar.</p>
+<h2>Paso 3: Estima los gastos variables</h2>
+<p>Los gastos variables cambian cada mes: alimentación, ropa, medicamentos, escuela, entretenimiento. Revisa los movimientos bancarios de los últimos dos meses para estimar con números reales.</p>
+<div class="tip"><p>💡 En Venezuela, la alimentación suele ser el gasto variable más significativo. Asignarle un límite semanal específico es una de las estrategias más efectivas para controlar el presupuesto familiar.</p></div>
+<h2>Paso 4: Incluye el ahorro como gasto fijo</h2>
+<p>El ahorro no debe ser lo que sobra al final del mes. Debe aparecer en el presupuesto como una categoría fija, con un monto asignado desde el principio. Aunque sea el 5% del ingreso familiar.</p>
+<h2>Paso 5: Revisa mensualmente</h2>
+<p>Dedica 20 minutos al inicio de cada mes para planificarlo y 20 minutos al final para evaluarlo. Ese hábito mensual convierte el presupuesto en una herramienta real de control.</p>
+<h2>Conclusión</h2>
+<p>El presupuesto familiar no es una restricción: es un plan que pone al hogar en control de su dinero. Construirlo con números reales y revisarlo mensualmente es el hábito financiero más valioso que una familia venezolana puede desarrollar.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+</div>`},
+
+  {id:2,cat:'alquiler',label:'Alquiler',cls:'tg-b',icon:'🏠',bg:'#FBF5E8',date:'10 jun 2025',
+   title:'Alquiler en Venezuela: lo que debes saber antes de firmar un contrato',
+   summary:'El contrato de arrendamiento es el documento más importante al alquilar. Aprende qué debe incluir, qué señales de alerta buscar y cuáles son tus derechos.',
+   rel:[1,3,6],
+   body:`${DISC}<span class="rdr-tag tg-b">Alquiler</span><span class="rdr-date">📅 10 junio 2025</span>
+<h1>Alquiler en Venezuela: lo que debes saber antes de firmar un contrato</h1>
+<p class="r-meta">Por Jose del Carmen Padilla Orozco · Economía Doméstica · Caracas, Venezuela · 8 min</p>
+<div class="rb">
+<p>El alquiler suele ser el gasto más grande en la economía doméstica venezolana. Firmarlo sin entender bien el contrato puede generar problemas costosos y difíciles de resolver.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+<h2>¿Cuánto debería costar el alquiler?</h2>
+<p>Una regla financiera ampliamente usada es que el alquiler no debería superar el 30% del ingreso neto del hogar. Si el hogar gana el equivalente a 400 dólares mensuales, el alquiler ideal no debería superar los 120.</p>
+<h2>Qué debe incluir un contrato de arrendamiento</h2>
+<p>Un contrato válido debe incluir: datos completos del arrendador y arrendatario, descripción exacta del inmueble, monto del canon y frecuencia de pago, duración del contrato, monto del depósito y condiciones para su devolución.</p>
+<div class="warn"><p>⚠️ <strong>Nunca entregues dinero sin contrato firmado.</strong> El depósito y el primer mes son cantidades significativas. Sin contrato, no tienes protección legal ante cualquier disputa.</p></div>
+<h2>Señales de alerta</h2>
+<ul>
+<li>Canon en moneda extranjera sin especificar la tasa de cambio aplicable.</li>
+<li>Ausencia de fecha de vencimiento del contrato.</li>
+<li>Presión para firmar inmediatamente sin tiempo para leer.</li>
+</ul>
+<h2>Conclusión</h2>
+<p>El alquiler bien gestionado empieza antes de mudarse: con la lectura cuidadosa del contrato y la verificación de que todos los aspectos importantes están claramente establecidos por escrito.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+</div>`},
+
+  {id:3,cat:'servicios',label:'Servicios',cls:'tg-c',icon:'💡',bg:'#E8F2EA',date:'5 jun 2025',
+   title:'Cómo reducir la factura de electricidad en el hogar venezolano',
+   summary:'La factura eléctrica puede ser uno de los gastos más variables del hogar. Con hábitos simples puedes reducirla significativamente sin sacrificar comodidad.',
+   rel:[1,4,5],
+   body:`${DISC}<span class="rdr-tag tg-c">Servicios</span><span class="rdr-date">📅 5 junio 2025</span>
+<h1>Cómo reducir la factura de electricidad en el hogar venezolano</h1>
+<p class="r-meta">Por Jose del Carmen Padilla Orozco · Economía Doméstica · Caracas, Venezuela · 7 min</p>
+<div class="rb">
+<p>La electricidad es uno de los servicios básicos cuyo costo puede variar significativamente según los hábitos de consumo del hogar. Gestionar el consumo eléctrico de forma inteligente tiene impacto directo en la economía doméstica.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+<h2>Los electrodomésticos que más consumen</h2>
+<p>El aire acondicionado es el mayor consumidor de electricidad en un hogar venezolano. Le siguen el calentador de agua eléctrico, la nevera, la lavadora y la plancha.</p>
+<h2>Hábitos que reducen el consumo</h2>
+<ul>
+<li>Apagar el aire acondicionado cuando no hay personas en la habitación.</li>
+<li>Usar ventiladores como alternativa cuando la temperatura lo permite.</li>
+<li>Aprovechar la luz natural durante el día y usar bombillas LED.</li>
+<li>Desconectar los aparatos en standby.</li>
+</ul>
+<div class="tip"><p>💡 El calentador de agua eléctrico puede representar hasta el 20% de la factura. Calentarlo solo cuando se necesita puede generar un ahorro significativo mes a mes.</p></div>
+<h2>Conclusión</h2>
+<p>Reducir la factura eléctrica no requiere grandes inversiones ni privaciones. Requiere conciencia sobre qué consume más y hábitos consistentes de uso responsable.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+</div>`},
+
+  {id:4,cat:'ahorro',label:'Ahorro',cls:'tg-d',icon:'🐷',bg:'#E8EAF6',date:'1 jun 2025',
+   title:'Cómo ahorrar en el hogar cuando el dinero apenas alcanza',
+   summary:'Ahorrar en una economía doméstica ajustada parece imposible. Pero hay estrategias concretas que permiten encontrar margen de ahorro incluso en los presupuestos más apretados.',
+   rel:[1,5,7],
+   body:`${DISC}<span class="rdr-tag tg-d">Ahorro</span><span class="rdr-date">📅 1 junio 2025</span>
+<h1>Cómo ahorrar en el hogar cuando el dinero apenas alcanza</h1>
+<p class="r-meta">Por Jose del Carmen Padilla Orozco · Economía Doméstica · Caracas, Venezuela · 8 min</p>
+<div class="rb">
+<p>En muchos hogares venezolanos, la percepción de que el dinero no alcanza para ahorrar es genuina. Sin embargo, hay una diferencia entre no alcanza para ahorrar nada y no alcanza para ahorrar lo que idealmente querría.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+<h2>El ahorro mínimo viable del hogar</h2>
+<p>No hay un monto mínimo debajo del cual ahorrar sea inútil. Cualquier cantidad apartada de forma consistente construye el hábito y acumula con el tiempo.</p>
+<h2>Págale al hogar antes que a los gastos</h2>
+<p>El día que llegan los ingresos, lo primero que se hace es transferir el ahorro a una cuenta separada. Antes de pagar cualquier gasto. Esta inversión del orden elimina el problema del lo que sobra que nunca sobra.</p>
+<div class="tip"><p>💡 La cuenta de ahorro del hogar no debe tener tarjeta de débito asociada si es posible. La fricción adicional reduce la tentación de usarlo para gastos cotidianos.</p></div>
+<h2>Dónde encontrar margen de ahorro</h2>
+<p><strong>Alimentación:</strong> planificar el menú semanal reduce el gasto entre un 15% y un 25%.<br>
+<strong>Servicios:</strong> hábitos de consumo consciente de electricidad y agua reducen esas facturas.<br>
+<strong>Gastos hormiga:</strong> pequeñas compras frecuentes que suman cantidades significativas al mes.</p>
+<h2>Conclusión</h2>
+<p>El ahorro doméstico en Venezuela es posible incluso con presupuestos ajustados. El hábito construido con montos pequeños es el que permite ahorrar más cuando mejoran los ingresos.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+</div>`},
+
+  {id:5,cat:'deudas',label:'Deudas',cls:'tg-e',icon:'🔓',bg:'#FFF3E0',date:'25 may 2025',
+   title:'Cómo manejar las deudas del hogar sin que destruyan la economía familiar',
+   summary:'Las deudas del hogar mal manejadas pueden convertirse en el principal obstáculo para la estabilidad financiera familiar. Aprende a organizarlas y a salir de ellas.',
+   rel:[1,4,8],
+   body:`${DISC}<span class="rdr-tag tg-e">Deudas</span><span class="rdr-date">📅 25 mayo 2025</span>
+<h1>Cómo manejar las deudas del hogar sin que destruyan la economía familiar</h1>
+<p class="r-meta">Por Jose del Carmen Padilla Orozco · Economía Doméstica · Caracas, Venezuela · 8 min</p>
+<div class="rb">
+<p>Las deudas son una realidad en la economía doméstica de muchos hogares venezolanos. Manejadas de forma ordenada, son una herramienta financiera. Manejadas sin estrategia, pueden convertirse en el principal generador de estrés familiar.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+<h2>Primero: el inventario de todas las deudas</h2>
+<p>Lista cada deuda con: a quién se le debe, monto total pendiente, tasa de interés si aplica, cuota mínima mensual y fecha de vencimiento. Ese inventario es el diagnóstico que permite tomar decisiones informadas.</p>
+<h2>Prioriza los pagos por consecuencia</h2>
+<p>En un hogar, la primera prioridad son las deudas cuyo impago tiene consecuencias inmediatas sobre la vivienda y los servicios básicos: el alquiler, la electricidad, el agua. Estas se pagan primero, siempre.</p>
+<div class="tip"><p>💡 La deuda con mayor tasa de interés es la más cara a largo plazo. Una vez cubiertas las urgentes, destinar el dinero extra a la deuda más cara reduce el costo total significativamente.</p></div>
+<h2>Negocia cuando sea necesario</h2>
+<p>Cuando el hogar no puede cumplir con los pagos acordados, contacta proactivamente al acreedor antes de incumplir. Muchos prefieren renegociar condiciones a tener una deuda incobrable.</p>
+<h2>Conclusión</h2>
+<p>Las deudas del hogar bien manejadas no tienen que ser una crisis permanente. Con inventario claro, priorización y disciplina, la mayoría de los hogares puede salir de situaciones de endeudamiento de forma gradual pero sostenida.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+</div>`},
+
+  {id:6,cat:'alquiler',label:'Alquiler',cls:'tg-b',icon:'🔑',bg:'#FBF5E8',date:'20 may 2025',
+   title:'Gastos ocultos del alquiler que muchos inquilinos no anticipan',
+   summary:'El canon mensual es solo el comienzo. Hay una lista de gastos adicionales que aparecen cuando alquilas y que la mayoría no calcula antes de comprometerse.',
+   rel:[2,1,3],
+   body:`${DISC}<span class="rdr-tag tg-b">Alquiler</span><span class="rdr-date">📅 20 mayo 2025</span>
+<h1>Gastos ocultos del alquiler que muchos inquilinos no anticipan</h1>
+<p class="r-meta">Por Jose del Carmen Padilla Orozco · Economía Doméstica · Caracas, Venezuela · 7 min</p>
+<div class="rb">
+<p>Cuando una familia decide alquilar, suele calcular el canon mensual y los servicios básicos. Pero hay gastos adicionales que aparecen en los primeros meses y que muchos no anticipan en su presupuesto doméstico.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+<h2>El depósito de garantía</h2>
+<p>En Venezuela, el depósito suele equivaler a uno o dos meses de alquiler. Es un pago inicial significativo que inmoviliza dinero durante toda la duración del contrato.</p>
+<h2>El condominio o cuota de mantenimiento</h2>
+<p>Muchos edificios cobran una cuota mensual de condominio que puede o no estar incluida en el canon. Si no está incluida, es un gasto fijo adicional que debe incorporarse al presupuesto desde el primer mes.</p>
+<h2>El equipamiento inicial</h2>
+<p>Un apartamento vacío necesita equipamiento para ser habitable: muebles básicos, utensilios de cocina, ropa de cama, productos de limpieza, bombillas. Esta inversión inicial puede ser considerable.</p>
+<div class="tip"><p>💡 Antes de comprometerte con un alquiler, calcula el costo real del primer mes: canon + depósito + condominio + equipamiento inicial estimado.</p></div>
+<h2>Conclusión</h2>
+<p>El costo real de alquilar es mayor que el canon mensual. Anticipar todos los gastos asociados permite tomar la decisión con información completa y planificar el presupuesto de forma realista.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+</div>`},
+
+  {id:7,cat:'ahorro',label:'Ahorro',cls:'tg-d',icon:'🛒',bg:'#E8EAF6',date:'15 may 2025',
+   title:'Cómo hacer el mercado familiar de forma inteligente y económica',
+   summary:'La alimentación es el gasto variable más grande de la mayoría de los hogares venezolanos. Aprende estrategias concretas para comer bien gastando lo necesario.',
+   rel:[4,1,3],
+   body:`${DISC}<span class="rdr-tag tg-d">Ahorro</span><span class="rdr-date">📅 15 mayo 2025</span>
+<h1>Cómo hacer el mercado familiar de forma inteligente y económica</h1>
+<p class="r-meta">Por Jose del Carmen Padilla Orozco · Economía Doméstica · Caracas, Venezuela · 8 min</p>
+<div class="rb">
+<p>La alimentación familiar suele ser el gasto variable más significativo en la economía doméstica venezolana. También es, con la estrategia correcta, donde más margen de optimización existe sin sacrificar calidad.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+<h2>El menú semanal: la herramienta más poderosa</h2>
+<p>Planificar qué va a comer la familia durante la semana antes de ir al mercado puede reducir el gasto en alimentación entre un 15% y un 25%.</p>
+<h2>La lista de mercado: obligatoria</h2>
+<p>Ir al mercado sin lista es la forma más cara de hacer las compras. La lista, construida a partir del menú semanal, convierte el mercado en una tarea ejecutable.</p>
+<div class="tip"><p>💡 Haz el mercado con el estómago lleno y con la lista en mano. Esas dos condiciones reducen el gasto en compras impulsivas de forma significativa y consistente.</p></div>
+<h2>Proteínas económicas y nutritivas</h2>
+<p>Los huevos, las caraotas, las lentejas y el atún en lata son fuentes proteicas accesibles y nutritivas. Incluir días de proteína no cárnica en el menú puede reducir significativamente el gasto sin afectar la nutrición.</p>
+<h2>Conclusión</h2>
+<p>Optimizar el gasto en alimentación familiar no implica comer peor: implica planificar mejor. El menú semanal y la lista de mercado son herramientas simples que generan ahorro real mes a mes.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+</div>`},
+
+  {id:8,cat:'servicios',label:'Servicios',cls:'tg-c',icon:'🌐',bg:'#E8F2EA',date:'10 may 2025',
+   title:'Internet en el hogar venezolano: cómo elegir y cuánto debería costar',
+   summary:'El internet se ha convertido en un servicio básico del hogar. Aprende qué considerar al contratar, qué velocidad necesitas realmente y cómo integrarlo en el presupuesto.',
+   rel:[3,1,5],
+   body:`${DISC}<span class="rdr-tag tg-c">Servicios</span><span class="rdr-date">📅 10 mayo 2025</span>
+<h1>Internet en el hogar venezolano: cómo elegir y cuánto debería costar</h1>
+<p class="r-meta">Por Jose del Carmen Padilla Orozco · Economía Doméstica · Caracas, Venezuela · 7 min</p>
+<div class="rb">
+<p>El internet ha pasado de ser un lujo a ser una necesidad básica en la mayoría de los hogares venezolanos. Trabajo remoto, educación, comunicación familiar, pagos digitales: todas estas actividades dependen de una conexión funcional.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+<h2>¿Cuánta velocidad necesita el hogar?</h2>
+<p>Para un hogar con dos o tres personas que navegan, hacen videollamadas y usan redes sociales, una conexión de 10-20 Mbps suele ser suficiente. Para trabajo remoto intensivo, se recomienda al menos 25-50 Mbps.</p>
+<h2>Cómo evaluar los proveedores disponibles</h2>
+<p>La mejor fuente de información sobre la calidad real de un proveedor en tu zona son los vecinos que ya usan ese servicio. Antes de contratar, pregunta qué velocidad obtienen realmente y con qué frecuencia tienen problemas.</p>
+<div class="tip"><p>💡 Lee bien el contrato antes de firmar. Presta atención a la velocidad garantizada vs la velocidad prometida, y las condiciones para cancelar el servicio.</p></div>
+<h2>Conclusión</h2>
+<p>Elegir el servicio de internet correcto para el hogar es una decisión económica y práctica. Evaluar las necesidades reales, consultar la experiencia de vecinos y leer el contrato son los tres pasos clave.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+</div>`},
+
+  {id:9,cat:'presupuesto',label:'Presupuesto',cls:'tg-a',icon:'📉',bg:'#F2E8E4',date:'5 may 2025',
+   title:'Cómo detectar y eliminar los gastos que drenan la economía del hogar',
+   summary:'Hay gastos que salen del hogar cada mes sin que nadie los note conscientemente. Aprende a hacerlos visibles y a decidir cuáles valen la pena y cuáles no.',
+   rel:[1,4,7],
+   body:`${DISC}<span class="rdr-tag tg-a">Presupuesto</span><span class="rdr-date">📅 5 mayo 2025</span>
+<h1>Cómo detectar y eliminar los gastos que drenan la economía del hogar</h1>
+<p class="r-meta">Por Jose del Carmen Padilla Orozco · Economía Doméstica · Caracas, Venezuela · 7 min</p>
+<div class="rb">
+<p>En la mayoría de los hogares venezolanos, hay una brecha entre lo que se cree gastar y lo que se gasta realmente. Esa brecha está compuesta por gastos pequeños, frecuentes y poco conscientes que individualmente parecen irrelevantes pero que sumados representan cantidades considerables.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+<h2>El diagnóstico: revisa los movimientos bancarios</h2>
+<p>El estado de cuenta bancario de los últimos dos meses es el registro más honesto de los gastos reales del hogar. Lista cada movimiento y agrúpalo por categoría.</p>
+<h2>Los gastos hormiga del hogar</h2>
+<p>Pequeñas compras frecuentes que individualmente no preocupan. Activos de forma acumulada mes a mes pueden representar entre el 10% y el 15% del presupuesto doméstico.</p>
+<div class="tip"><p>💡 Una semana de registro manual de todos los gastos del hogar, por pequeños que sean, suele ser reveladora. Anota cada gasto en el momento en que ocurre.</p></div>
+<h2>El delivery: el gasto más subestimado</h2>
+<p>Pedir comida a domicilio con frecuencia puede costar entre 3 y 5 veces más que preparar la misma comida en casa.</p>
+<h2>Conclusión</h2>
+<p>Los gastos invisibles del hogar no son inevitables. Una vez visibles, el hogar puede decidir cuáles mantener conscientemente y cuáles eliminar, liberando margen de ahorro mensual.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+</div>`},
+
+  {id:10,cat:'deudas',label:'Deudas',cls:'tg-e',icon:'💪',bg:'#FFF3E0',date:'1 may 2025',
+   title:'Economía doméstica sana: cómo construir estabilidad financiera familiar',
+   summary:'La estabilidad financiera del hogar no llega sola. Se construye con decisiones consistentes. Esta guía te da el mapa completo para lograrlo en Venezuela.',
+   rel:[1,4,5],
+   body:`${DISC}<span class="rdr-tag tg-e">Deudas</span><span class="rdr-date">📅 1 mayo 2025</span>
+<h1>Economía doméstica sana: cómo construir estabilidad financiera familiar</h1>
+<p class="r-meta">Por Jose del Carmen Padilla Orozco · Economía Doméstica · Caracas, Venezuela · 9 min</p>
+<div class="rb">
+<p>La estabilidad financiera del hogar venezolano no depende exclusivamente de cuánto se gana. Depende de cómo se gestiona lo que se gana.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+<h2>Los cuatro pilares de la economía doméstica sana</h2>
+<p><strong>Pilar 1 — Presupuesto activo:</strong> el hogar sabe exactamente cuánto entra y tiene asignado un destino para cada bolívar antes de que llegue el mes.</p>
+<p><strong>Pilar 2 — Fondo de emergencia:</strong> el hogar tiene una reserva equivalente a al menos dos meses de gastos esenciales.</p>
+<p><strong>Pilar 3 — Deudas manejadas:</strong> el hogar no tiene deudas de alto interés, o tiene un plan activo para eliminarlas.</p>
+<p><strong>Pilar 4 — Ahorro constante:</strong> el hogar aparta regularmente una porción de sus ingresos, aunque sea pequeña.</p>
+<div class="tip"><p>💡 Desde espacios de aprendizaje como Provinet Empresas se insiste en que la educación económica del hogar es tan importante como la académica. Un hogar que entiende sus finanzas toma mejores decisiones.</p></div>
+<div class="warn"><p>⚠️ Economía Doméstica menciona Provinet Empresas como referencia educativa sin afiliación comercial oficial.</p></div>
+<h2>Cómo empezar cuando el punto de partida es difícil</h2>
+<p>El primer paso no es resolver todo de una vez sino elegir el pilar más urgente y trabajarlo primero. Generalmente, ese primer pilar es el presupuesto: no se puede mejorar lo que no se mide.</p>
+<h2>Conclusión</h2>
+<p>La economía doméstica sana en Venezuela es posible. No requiere ingresos extraordinarios: requiere gestión consciente y hábitos consistentes.</p>
+<div class="adslot"><!-- HUECO ANUNCIO ADSENSE --></div>
+</div>`}
+];
+
+const PAGES={
+  sobre:{title:'Sobre Nosotros',content:`<div class="page-disc">📋 <strong>Declaración de independencia:</strong> Economía Doméstica es un blog editorial completamente independiente. No tiene afiliación comercial oficial con ningún banco, entidad financiera ni organización. Provinet Empresas se menciona como referencia educativa sin afiliación comercial oficial.</div>
+<h1>Sobre Economía Doméstica</h1>
+<h2>¿Qué es este blog?</h2>
+<p>Economía Doméstica es un blog editorial independiente dedicado a la educación sobre economía del hogar para familias venezolanas. Publicamos artículos sobre presupuesto familiar, alquiler, servicios básicos, ahorro doméstico y manejo de deudas del hogar.</p>
+<p>Este blog <strong>no es</strong> un banco, no presta servicios financieros, no capta inversiones y no tiene afiliación con ninguna entidad financiera ni gubernamental.</p>
+<h2>¿Quién está detrás?</h2>
+<p>El blog es operado por <strong>Jose del Carmen Padilla Orozco</strong>, desde Caracas, Venezuela.</p>
+<h2>Sobre Provinet Empresas</h2>
+<p>Provinet Empresas es una marca educativa de aprendizaje sobre finanzas y emprendimiento. <strong>Economía Doméstica no tiene afiliación comercial oficial con Provinet Empresas ni actúa en su nombre.</strong></p>
+<p>📧 <a href="mailto:economiadomestica@gmail.com">economiadomestica@gmail.com</a><br>📍 Caracas, Venezuela</p>`},
+  contacto:{title:'Contacto',content:`<h1>Contacto</h1>
+<div class="page-disc">📋 Economía Doméstica es un blog educativo independiente. No somos una entidad financiera y no brindamos asesoría financiera personalizada.</div>
+<h2>Datos de contacto</h2>
+<p>📧 <strong><a href="mailto:economiadomestica@gmail.com">economiadomestica@gmail.com</a></strong><br>📍 Caracas, Venezuela</p>
+<p>Respondemos en 24 a 48 horas hábiles.</p>
+<h2>Escríbenos</h2>
+<div class="cf">
+  <input type="text" id="cf-name" placeholder="Tu nombre" maxlength="80">
+  <input type="email" id="cf-email" placeholder="Tu correo electrónico" autocomplete="email">
+  <textarea id="cf-msg" placeholder="Tu mensaje sobre el contenido del blog" rows="4" maxlength="800"></textarea>
+  <p style="font-size:0.72rem;color:var(--gris)">Solo usamos tus datos para responderte. <a href="#" onclick="showPage('privacidad');return false;">Política de Privacidad</a>.</p>
+  <button onclick="cfSubmit()">Enviar mensaje</button>
+  <div class="cf-ok" id="cf-ok">✓ ¡Mensaje recibido! Te respondemos pronto.</div>
+</div>`},
+  editorial:{title:'Política Editorial',content:`<h1>Política Editorial</h1>
+<h2>Criterios de publicación</h2>
+<p>Publicamos artículos originales, verificables, útiles para la economía del hogar y relevantes para el contexto venezolano. No publicamos contenido patrocinado sin indicarlo.</p>
+<h2>Independencia editorial</h2>
+<p>La publicidad (Google AdSense) no influye en el contenido editorial. Los criterios son completamente independientes de cualquier relación comercial.</p>
+<h2>Sobre Provinet Empresas</h2>
+<p>Cuando este blog menciona Provinet Empresas, lo hace como referencia educativa. <strong>Economía Doméstica no tiene afiliación comercial oficial con Provinet Empresas.</strong></p>
+<h2>Correcciones</h2>
+<p>Si identificas un error, escríbenos a <a href="mailto:economiadomestica@gmail.com">economiadomestica@gmail.com</a>.</p>`},
+  privacidad:{title:'Política de Privacidad',content:`<h1>Política de Privacidad</h1>
+<p><strong>Titular:</strong> Jose del Carmen Padilla Orozco · <strong>Sitio:</strong> economiadomestica.blog · <strong>Correo:</strong> economiadomestica@gmail.com · <strong>País:</strong> Venezuela</p>
+<h2>¿Qué datos recopilamos?</h2>
+<ul>
+<li><strong>Formulario de contacto:</strong> nombre, email y mensaje. Solo para responderte.</li>
+<li><strong>Newsletter:</strong> solo email para enviarte nuevos artículos.</li>
+<li><strong>Cookies analíticas:</strong> Google Analytics, datos anónimos.</li>
+<li><strong>Cookies publicitarias:</strong> Google AdSense para anuncios relevantes.</li>
+</ul>
+<p>Este sitio <strong>no solicita</strong> contraseñas, datos bancarios ni documentos de identidad.</p>
+<p>Gestiona preferencias publicitarias en <a href="https://www.google.com/settings/ads" target="_blank">google.com/settings/ads</a>. Última actualización: Junio 2025.</p>`},
+  cookies:{title:'Política de Cookies',content:`<h1>Política de Cookies</h1>
+<p><strong>Técnicas:</strong> necesarias para el funcionamiento básico del sitio.</p>
+<p><strong>Analíticas:</strong> Google Analytics, datos anónimos de uso.</p>
+<p><strong>Publicitarias:</strong> Google AdSense. Desactívalas en <a href="https://www.google.com/settings/ads" target="_blank">google.com/settings/ads</a>.</p>
+<p>Gestiona tus preferencias usando el banner al acceder al sitio.</p>`},
+  legal:{title:'Aviso Legal',content:`<h1>Aviso Legal</h1>
+<div class="page-disc">📋 Economía Doméstica no tiene afiliación con ningún banco ni entidad financiera. Provinet Empresas se menciona exclusivamente como referencia educativa sin afiliación comercial oficial.</div>
+<h2>Titularidad</h2>
+<p><strong>Titular:</strong> Jose del Carmen Padilla Orozco<br><strong>Blog:</strong> Economía Doméstica<br><strong>Dominio:</strong> economiadomestica.blog<br><strong>Correo:</strong> economiadomestica@gmail.com<br><strong>País:</strong> Venezuela</p>
+<h2>Objeto del sitio</h2>
+<p>Blog editorial independiente con fines exclusivamente informativos y educativos sobre economía del hogar. No vende productos ni servicios, no presta asesoría financiera y no capta datos con fines comerciales.</p>
+<h2>Responsabilidad</h2>
+<p>El contenido tiene carácter exclusivamente informativo y educativo. No constituye asesoramiento financiero ni legal. Para asesoramiento profesional, consulta con un especialista certificado.</p>
+<h2>Propiedad intelectual</h2>
+<p>El contenido publicado es propiedad de Jose del Carmen Padilla Orozco. La reproducción requiere autorización escrita del titular.</p>`}
+};
+
+const CATS=['all','presupuesto','alquiler','servicios','ahorro','deudas'];
+const LABELS={all:'Todos',presupuesto:'Presupuesto',alquiler:'Alquiler',servicios:'Servicios',ahorro:'Ahorro',deudas:'Deudas'};
+
+// Hero tags
+const htags=document.getElementById('hero-tags');
+CATS.filter(c=>c!=='all').forEach(c=>{
+  const t=document.createElement('span');
+  t.className='hero-tag';
+  t.textContent=LABELS[c];
+  t.onclick=()=>fcat(c);
+  htags.appendChild(t);
+});
+
+// Hero featured
+const hf=document.getElementById('hero-feat');
+ARTS.slice(0,4).forEach(a=>{
+  const d=document.createElement('div');
+  d.className='hero-feat-item';
+  d.onclick=()=>openReader(a.id);
+  d.innerHTML='<div class="hfi-cat">'+a.label+'</div><div class="hfi-title">'+a.title+'</div><div class="hfi-desc">'+a.summary.substring(0,80)+'...</div>';
+  hf.appendChild(d);
+});
+
+// Filters
+const fr=document.getElementById('frow');
+CATS.forEach(c=>{
+  const b=document.createElement('button');
+  b.className='fb'+(c==='all'?' on':'');
+  b.textContent=LABELS[c];
+  b.onclick=()=>fcat(c);
+  fr.appendChild(b);
+});
+
+function renderGrid(list){
+  document.getElementById('grid').innerHTML=list.map(a=>`
+    <div class="art-card" onclick="openReader(${a.id})">
+      <div class="art-thumb" style="background:${a.bg}">${a.icon}</div>
+      <div class="art-body">
+        <div class="art-meta">
+          <span class="art-tag ${a.cls}">${a.label}</span>
+          <span class="art-date">${a.date}</span>
+        </div>
+        <h3>${a.title}</h3>
+        <p>${a.summary}</p>
+        <span class="art-read">Leer artículo</span>
+      </div>
+    </div>`).join('');
+}
+renderGrid(ARTS);
+
+function fcat(cat){
+  document.querySelectorAll('.fb').forEach((b,i)=>b.classList.toggle('on',CATS[i]===cat));
+  document.querySelectorAll('.hero-tag').forEach((t,i)=>t.classList.toggle('on',CATS.filter(c=>c!=='all')[i]===cat));
+  renderGrid(cat==='all'?ARTS:ARTS.filter(a=>a.cat===cat));
+  document.getElementById('articulos')?.scrollIntoView({behavior:'smooth'});
+}
+
+function doSearch(q){
+  if(!q.trim()){renderGrid(ARTS);return}
+  const lq=q.toLowerCase();
+  renderGrid(ARTS.filter(a=>a.title.toLowerCase().includes(lq)||a.summary.toLowerCase().includes(lq)));
+}
+
+function openReader(id){
+  const a=ARTS.find(x=>x.id===id);if(!a)return;
+  document.getElementById('rcrumb').textContent=a.label;
+  const rel=a.rel.map(rid=>ARTS.find(x=>x.id===rid)).filter(Boolean)
+    .map(r=>`<a class="rel-lnk" href="#" onclick="openReader(${r.id});return false;">${r.title}</a>`).join('');
+  document.getElementById('rcontent').innerHTML=a.body+`<div class="rel-blk"><h4>También te puede interesar</h4><div class="rel-links">${rel}</div></div>`;
+  const rd=document.getElementById('reader');rd.style.display='block';rd.scrollTop=0;document.body.style.overflow='hidden';
+}
+
+function closeReader(){document.getElementById('reader').style.display='none';document.body.style.overflow='';}
+
+function showPage(key){
+  const p=PAGES[key];if(!p)return;
+  document.getElementById('page-title').textContent=p.title;
+  document.getElementById('page-content').innerHTML=p.content;
+  const pg=document.getElementById('page');pg.style.display='block';pg.scrollTop=0;document.body.style.overflow='hidden';
+}
+function closePage(){document.getElementById('page').style.display='none';document.body.style.overflow='';}
+function goHome(){closeReader();closePage();window.scrollTo({top:0,behavior:'smooth'});}
+
+function nlSubmit(){
+  const e=document.getElementById('nl-email');
+  if(!e.value||!e.value.includes('@')){e.style.borderColor='var(--terra)';return;}
+  e.style.borderColor='';
+  document.querySelector('.nl-row').style.display='none';
+  document.getElementById('nl-ok').style.display='block';
+}
+function cfSubmit(){
+  const e=document.getElementById('cf-email');if(!e)return;
+  if(!e.value||!e.value.includes('@')){e.style.borderColor='var(--terra)';return;}
+  e.style.borderColor='';
+  ['cf-name','cf-email','cf-msg'].forEach(id=>{const el=document.getElementById(id);if(el)el.disabled=true;});
+  document.getElementById('cf-ok').style.display='block';
+}
+function okCk(){localStorage.setItem('ck','y');document.getElementById('ck').style.display='none';}
+function noCk(){localStorage.setItem('ck','n');document.getElementById('ck').style.display='none';}
+if(localStorage.getItem('ck'))document.getElementById('ck').style.display='none';
+function togNav(){
+  const m=document.querySelector('.nav-links');
+  const show=m.style.display==='flex';
+  m.style.cssText=show?'':'display:flex;flex-direction:column;position:absolute;top:56px;left:0;right:0;background:var(--negro);padding:16px 24px;z-index:99;border-top:2px solid var(--terra)';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeReader();closePage();}});
+</script>
+</body>
+</html>
